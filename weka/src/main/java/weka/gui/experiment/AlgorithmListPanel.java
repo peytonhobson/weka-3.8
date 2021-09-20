@@ -398,8 +398,11 @@ public class AlgorithmListPanel extends JPanel implements ActionListener {
     m_DownBut.setEnabled(false);
     m_DownBut.addActionListener(this);
 <<<<<<< HEAD
+<<<<<<< HEAD
     m_CompareBut.setEnabled(false);
     m_CompareBut.addActionListener(this);
+=======
+>>>>>>> parent of dc7f05e (asdf)
 =======
 >>>>>>> parent of dc7f05e (asdf)
 
