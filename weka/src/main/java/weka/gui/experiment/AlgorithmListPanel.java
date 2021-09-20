@@ -135,6 +135,9 @@ public class AlgorithmListPanel extends JPanel implements ActionListener {
 
   /** Click to remove the selected dataset from the list */
   protected JButton m_DeleteBut = new JButton("Delete selected");
+  
+  /** Click to make selected algorithm the compare column */
+  protected JButton m_CompareBut = new JButton("Make Baseline");
 
   /** Click to edit the load the options for athe selected algorithm */
   protected JButton m_LoadOptionsBut = new JButton("Load options...");
