@@ -397,6 +397,8 @@ public class AlgorithmListPanel extends JPanel implements ActionListener {
     m_UpBut.addActionListener(this);
     m_DownBut.setEnabled(false);
     m_DownBut.addActionListener(this);
+    m_CompareBut.setEnabled(false);
+    m_CompareBut.addActionListern(this);
 
     m_List.addListSelectionListener(new ListSelectionListener() {
       @Override
@@ -538,6 +540,7 @@ public class AlgorithmListPanel extends JPanel implements ActionListener {
     if (e.getSource() == m_List) {
       m_DeleteBut.setEnabled(m_List.getSelectedIndex() > -1);
       m_AddBut.setEnabled(true);
+      m_CompareBut.setEnabled(m_List.getSelectedIndices().length > 1);
       m_EditBut.setEnabled(m_List.getSelectedIndices().length == 1);
       m_LoadOptionsBut.setEnabled(m_List.getSelectedIndices().length == 1);
       m_SaveOptionsBut.setEnabled(m_List.getSelectedIndices().length == 1);
