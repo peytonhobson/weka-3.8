@@ -397,8 +397,11 @@ public class AlgorithmListPanel extends JPanel implements ActionListener {
     m_UpBut.addActionListener(this);
     m_DownBut.setEnabled(false);
     m_DownBut.addActionListener(this);
+<<<<<<< HEAD
     m_CompareBut.setEnabled(false);
     m_CompareBut.addActionListener(this);
+=======
+>>>>>>> parent of dc7f05e (asdf)
 
     m_List.addListSelectionListener(new ListSelectionListener() {
       @Override
@@ -540,7 +543,6 @@ public class AlgorithmListPanel extends JPanel implements ActionListener {
     if (e.getSource() == m_List) {
       m_DeleteBut.setEnabled(m_List.getSelectedIndex() > -1);
       m_AddBut.setEnabled(true);
-      m_CompareBut.setEnabled(m_List.getSelectedIndices().length > 1);
       m_EditBut.setEnabled(m_List.getSelectedIndices().length == 1);
       m_LoadOptionsBut.setEnabled(m_List.getSelectedIndices().length == 1);
       m_SaveOptionsBut.setEnabled(m_List.getSelectedIndices().length == 1);
