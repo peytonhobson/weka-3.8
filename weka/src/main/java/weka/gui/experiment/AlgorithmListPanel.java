@@ -398,7 +398,7 @@ public class AlgorithmListPanel extends JPanel implements ActionListener {
     m_DownBut.setEnabled(false);
     m_DownBut.addActionListener(this);
     m_CompareBut.setEnabled(false);
-    m_CompareBut.addActionListern(this);
+    m_CompareBut.addActionListener(this);
 
     m_List.addListSelectionListener(new ListSelectionListener() {
       @Override
