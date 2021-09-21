@@ -128,6 +128,10 @@ public class ResultsPanel extends JPanel {
   protected DefaultComboBoxModel m_CompareModel = new DefaultComboBoxModel(
     FOR_JFC_1_1_DCBM_BUG);
 
+  /** The model embedded in m_BaseLineCombo */
+  protected DefaultComboBoxModel m_BaseLineModel = new DefaultComboBoxModel(
+  FOR_JFC_1_1_DCBM_BUG);
+
   /** The model embedded in m_SortCombo. */
   protected DefaultComboBoxModel m_SortModel = new DefaultComboBoxModel(
     FOR_JFC_1_1_DCBM_BUG);
@@ -214,6 +218,9 @@ public class ResultsPanel extends JPanel {
 
   /** Lets the user select which performance measure to analyze. */
   protected JComboBox m_CompareCombo = new JComboBox(m_CompareModel);
+
+  /** Lets the user select which  algorithm to set as the baseline*/
+  protected JComboBox m_BaseLineCombo = new JComboBox(m_BaseLineModel)
 
   /** Lets the user select which column to use for sorting. */
   protected JComboBox m_SortCombo = new JComboBox(m_SortModel);
@@ -411,6 +418,14 @@ public class ResultsPanel extends JPanel {
       }
     });
     m_CompareCombo.setEnabled(false);
+    m_BaseLineCombo.setEnabled(false);
+    m_BaseLineCombo.addActionListener(new ActionListener() {
+      @Override
+      public void actionPerformed(ActionEvent e) {
+        setTestBaseFromDialog();
+      }
+    });
+
     m_SortCombo.setEnabled(false);
 
     m_SigTex.setEnabled(false);
@@ -586,6 +601,25 @@ public class ResultsPanel extends JPanel {
     gbL.setConstraints(m_CompareCombo, gbC);
     p3.add(m_CompareCombo);
 
+    y++;
+    lab = new JLabel("Baseline", SwingConstants.RIGHT);
+    lab.setDisplayedMnemonic('z');
+    lab.setLabelFor(m_BaseLineCombo);
+    gbC = new GridBagConstraints();
+    gbC.anchor = GridBagConstraints.EAST;
+    gbC.gridy = y;
+    gbC.gridx = 0;
+    gbC.insets = new Insets(2, 10, 2, 10);
+    gbL.setConstraints(lab, gbC);
+    p3.add(lab);
+    gbC = new GridBagConstraints();
+    gbC.fill = GridBagConstraints.HORIZONTAL;
+    gbC.gridy = y;
+    gbC.gridx = 1;
+    gbC.weightx = 100;
+    gbL.setConstraints(m_BaseLineCombo, gbC);
+    p3.add(m_BaseLineCombo);
+    
     y++;
     lab = new JLabel("Significance", SwingConstants.RIGHT);
     lab.setDisplayedMnemonic('g');
@@ -785,18 +819,21 @@ public class ResultsPanel extends JPanel {
     m_TesterClasses.setPreferredSize(COMBO_SIZE);
     m_PanelDatasetResultKeys.setPreferredSize(COMBO_SIZE);
     m_CompareCombo.setPreferredSize(COMBO_SIZE);
+    m_BaseLineCombo.setPreferredSize(COMBO_SIZE);
     m_SigTex.setPreferredSize(COMBO_SIZE);
     m_SortCombo.setPreferredSize(COMBO_SIZE);
 
     m_TesterClasses.setMaximumSize(COMBO_SIZE);
     m_PanelDatasetResultKeys.setMaximumSize(COMBO_SIZE);
     m_CompareCombo.setMaximumSize(COMBO_SIZE);
+    m_BaseLineCombo.setPreferredSize(COMBO_SIZE);
     m_SigTex.setMaximumSize(COMBO_SIZE);
     m_SortCombo.setMaximumSize(COMBO_SIZE);
 
     m_TesterClasses.setMinimumSize(COMBO_SIZE);
     m_PanelDatasetResultKeys.setMinimumSize(COMBO_SIZE);
     m_CompareCombo.setMinimumSize(COMBO_SIZE);
+    m_BaseLineCombo.setPreferredSize(COMBO_SIZE);
     m_SigTex.setMinimumSize(COMBO_SIZE);
     m_SortCombo.setMinimumSize(COMBO_SIZE);
   }
@@ -1116,6 +1153,7 @@ public class ResultsPanel extends JPanel {
     m_ResultKeyBut.setEnabled(true);
     m_SwapDatasetKeyAndResultKeyBut.setEnabled(true);
     m_CompareCombo.setEnabled(true);
+    m_BaseLineCombo.setEnabled(true);
     m_SortCombo.setEnabled(true);
     if (ExperimenterDefaults.getSorting().length() != 0) {
       setSelectedItem(m_SortCombo, ExperimenterDefaults.getSorting());
@@ -1190,6 +1228,7 @@ public class ResultsPanel extends JPanel {
        * if (tname.length() > 20) { tname = tname.substring(0, 20); }
        */
       m_TestsModel.addElement(tname);
+      m_BaseLineModel.addElement(tname);
     }
 
     m_DisplayedModel.removeAllElements();
