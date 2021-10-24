@@ -135,9 +135,6 @@ public class AlgorithmListPanel extends JPanel implements ActionListener {
 
   /** Click to remove the selected dataset from the list */
   protected JButton m_DeleteBut = new JButton("Delete selected");
-  
-  /** Click to make selected algorithm the compare column */
-  protected JButton m_CompareBut = new JButton("Make Baseline");
 
   /** Click to edit the load the options for athe selected algorithm */
   protected JButton m_LoadOptionsBut = new JButton("Load options...");
@@ -397,14 +394,6 @@ public class AlgorithmListPanel extends JPanel implements ActionListener {
     m_UpBut.addActionListener(this);
     m_DownBut.setEnabled(false);
     m_DownBut.addActionListener(this);
-<<<<<<< HEAD
-<<<<<<< HEAD
-    m_CompareBut.setEnabled(false);
-    m_CompareBut.addActionListener(this);
-=======
->>>>>>> parent of dc7f05e (asdf)
-=======
->>>>>>> parent of dc7f05e (asdf)
 
     m_List.addListSelectionListener(new ListSelectionListener() {
       @Override
